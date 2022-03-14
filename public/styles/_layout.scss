@@ -1,0 +1,21 @@
+$largeDevices: 813px;
+$mediumDevices: 812px;
+$smallDevices: 550px;
+
+@mixin largeScreen() {
+  @media (min-width:#{$largeDevices}) {
+    @content;
+  }
+}
+
+@mixin mediumScreen() {
+  @media (max-width:#{$mediumDevices}) {
+    @content;
+  }
+}
+
+@mixin smallScreen() {
+  @media (max-width:#{$smallDevices}) {
+    @content;
+  }
+}

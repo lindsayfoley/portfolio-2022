@@ -1,0 +1,9 @@
+export { default as About } from "./About/About";
+export { default as Anchor } from "./Anchor/Anchor";
+export { default as Button } from "./Button/Button";
+export { default as Footer } from "./Footer/Footer";
+export { default as Home } from "./Home/Home";
+export { default as JobDetailsCard } from "./JobDetailsCard/JobDetailsCard";
+export { default as Layout } from "./Layout/Layout";
+export { default as Nav } from "./Nav/Nav";
+export { default as Portfolio } from "./Portfolio/Portfolio";
