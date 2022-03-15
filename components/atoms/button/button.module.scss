@@ -16,4 +16,8 @@
     background: $light-color;
     color: $primary-colour;
   }
+
+  @include smallScreen {
+    margin-top: 20px;
+  }
 }

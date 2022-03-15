@@ -1,7 +1,8 @@
 import { VFC } from "react";
 import { Nav } from "components/atoms";
 import { JobDetailsCard } from "components/molecules";
-// import workExperience from "../../molecules/jobDetailsCard/jobs";
+import { Companies } from "components/molecules/jobDetailsCard/company-history";
+import { CompanyDetails } from "components/molecules/jobDetailsCard/types";
 import styles from "./portfolio.module.scss";
 
 const Portfolio: VFC = () => (
@@ -13,9 +14,11 @@ const Portfolio: VFC = () => (
     </header>
     <main>
       <section className={styles.companies}>
-        {workExperience.map((job) => (
-          <JobDetailsCard key={job.id} company={job} />
-        ))}
+        {Companies.map((company: CompanyDetails) => {
+          return company && company.id ? (
+            <JobDetailsCard key={company.id} company={company} />
+          ) : null;
+        })}
       </section>
       <Nav
         links={[

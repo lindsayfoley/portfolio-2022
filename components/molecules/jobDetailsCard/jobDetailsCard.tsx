@@ -1,95 +1,49 @@
-import { Anchor } from "components/atoms";
 import { useState, VFC } from "react";
-import styles from "./JobDetailsCard.module.scss";
+import { Anchor } from "components/atoms";
+import { CompanyDetails } from "./types";
+import cardStyles from "./jobDetailsCard.module.scss";
+import { useJobDescriptionToggler } from "hooks";
+import styles from "components/organisms/portfolio/portfolio.module.scss";
 
-import { CompanyDetails } from "./jobs";
+const JobDetailsCard: VFC<{ company: CompanyDetails }> = ({ company }) => {
+  const [selectedCardCompanyId] = useState<string>("");
 
-export interface JobDetailsCardProps {
-  company: CompanyDetails;
-}
+  const { hasVisibleDescription, handleCardInteraction, handleOnKeyDown } =
+    useJobDescriptionToggler(selectedCardCompanyId);
 
-const JobDetailsCard: VFC<JobDetailsCardProps> = ({ company }) => {
-  if (!company) {
-    return null;
-  }
-
-  const [isJobDescriptionVisible, setIsJobDescriptionVisible] =
-    useState<boolean>(false);
-
-  const [summaryIsVisible, setSummaryIsVisible] = useState<boolean>(false);
-
-  const cardClassname = "";
-
-  //   className,
-  //   handleClick,
-  //   summaryIsVisible,
-
-  //   const handleClick = (id: string) => {
-  //     const { visibleJobDetailsCard } = state;
-  //     let updatedJobs: string[] = [...visibleJobDetailsCard];
-
-  //     if (visibleJobDetailsCard.includes(id)) {
-  //       updatedJobs = visibleJobDetailsCard.filter((cardId) => cardId !== id);
-  //       setState({ visibleJobDetailsCard: updatedJobs });
-  //     } else {
-  //       updatedJobs.push(id);
-  //       setState({
-  //         visibleJobDetailsCard: updatedJobs,
-  //       });
-  //     }
-  //   };
-
-  //   hasVisibleJobSummary = (id: string) =>
-  //     state.visibleJobDetailsCard.includes(id);
-
-  const handleClick = (id: string) => {};
-
-  const defaultClassName = "flip-card";
-  const classNames =
-    cardClassname !== "" && `${cardClassname} ${defaultClassName}`;
-
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-    if (
-      event.key === " " ||
-      event.key === "Enter" ||
-      event.key === "Spacebar"
-    ) {
-      handleClick(company.id);
-    }
-  };
+  const companyId = company.id;
+  const articleClassnames = `${styles[companyId]} ${cardStyles["flip-card"]} ${styles["flip-card"]}`;
 
   return (
     <article
-      className={styles["company.id"]}
-      onClick={() => handleClick(company.id)}
+      className={
+        hasVisibleDescription(companyId)
+          ? `${styles["show-details"]} ${cardStyles["show-details"]} ${articleClassnames}`
+          : articleClassnames
+      }
+      onClick={() => handleCardInteraction(companyId)}
       onKeyDown={handleOnKeyDown}
-      aria-controls={company.id}
+      aria-controls={companyId}
       role="button"
       tabIndex={0}
-      aria-pressed={summaryIsVisible}
     >
       <div
-        className="wrapper"
+        className={`${cardStyles.wrapper} ${styles.wrapper}`}
         itemScope
         itemType="http://schema.org/CreativeWork"
       >
-        <div className="heading">
+        <div className={cardStyles.heading}>
           <h3 itemProp="name">{company.companyName}</h3>
           <span>Details &rsaquo;</span>
         </div>
         <div
-          className="description"
+          className={`${styles.description} ${cardStyles.description}`}
           itemProp="description"
-          aria-hidden={!summaryIsVisible}
-          aria-labelledby={company.id}
+          aria-labelledby={companyId}
         >
           {company.description}
           <hr />
-          {company.cta ? (
-            <Anchor link={company.link} cta={company.cta} />
-          ) : (
-            <Anchor link={company.link} cta="Visit Site &rsaquo;" />
-          )}
+          <Anchor link={company.link} cta={company.cta || "Visit Site ›"} />
         </div>
       </div>
     </article>
