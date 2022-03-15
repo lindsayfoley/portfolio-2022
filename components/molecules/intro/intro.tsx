@@ -1,9 +1,9 @@
 import { VFC } from "react";
-import { Nav } from "components";
-import styles from "./Home.module.scss";
+import { Nav } from "components/atoms";
+import styles from "./intro.module.scss";
 
-const Home: VFC = () => (
-  <section className={styles.home}>
+const Intro: VFC = () => (
+  <section className={styles.intro}>
     <header>
       <h1 itemProp="name">
         <a href="/">Lindsay Foley</a>
@@ -18,7 +18,7 @@ const Home: VFC = () => (
       alt="A neat and tidy desk housing all the essentials including a cat mug full of english breakfast tea, biscuits and an iMac"
     />
     <Nav
-      buttonArr={[
+      links={[
         { link: "/portfolio", cta: "View my work" },
         { link: "/about", cta: "about me" },
       ]}
@@ -26,4 +26,4 @@ const Home: VFC = () => (
   </section>
 );
 
-export default Home;
+export default Intro;

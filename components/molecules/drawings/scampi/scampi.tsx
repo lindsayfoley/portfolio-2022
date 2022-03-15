@@ -1,13 +1,9 @@
 import { VFC } from "react";
-import baseStyles from "../Spotlight-tile.module.scss";
-import styles from "./Scampi.module.scss";
+import styles from "./scampi.module.scss";
 
 const Scampi: VFC = () => (
-  <div
-    className={`${baseStyles["spotlight-tile"]}  ${styles.scampi}`}
-    aria-hidden="true"
-  >
-    <div className={baseStyles.inner}>
+  <div className={`tile ${styles.scampi}`} aria-hidden="true">
+    <div className={`inner ${styles.inner}`}>
       <div className={styles.head}>
         <span className={styles.eye}>&nbsp;</span>
         <span className={styles.eye}>&nbsp;</span>

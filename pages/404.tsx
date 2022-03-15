@@ -1,7 +1,8 @@
 import { VFC } from "react";
 import Head from "next/head";
-import { Layout, Nav } from "components";
-import { Scampi } from "components/Drawings";
+import { Nav } from "components/atoms";
+import { Layout } from "components/templates";
+import { Scampi } from "components/molecules/drawings";
 
 const ErrorPage: VFC = () => (
   <Layout>
@@ -21,7 +22,7 @@ const ErrorPage: VFC = () => (
       </p>
       <Scampi />
       <Nav
-        buttonArr={[
+        links={[
           { link: "/about", cta: "about me" },
           { link: "/portfolio", cta: "View my work" },
         ]}

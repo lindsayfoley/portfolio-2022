@@ -1,9 +1,9 @@
 import { VFC } from "react";
-import { Nav } from "components";
-import { Coding } from "components/Drawings";
-import styles from "./About.module.scss";
+import { Coding } from "components/molecules/drawings";
+import { Nav } from "components/atoms";
+import styles from "./about-me.module.scss";
 
-const About: VFC = () => (
+const AboutMe: VFC = () => (
   <>
     <header>
       <h1 itemProp="name">
@@ -71,7 +71,7 @@ const About: VFC = () => (
         </div>
       </section>
       <Nav
-        buttonArr={[
+        links={[
           { link: "/portfolio", cta: "View my work" },
           { link: "/", cta: "back to home" },
         ]}
@@ -80,4 +80,4 @@ const About: VFC = () => (
   </>
 );
 
-export default About;
+export default AboutMe;

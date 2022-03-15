@@ -1,6 +1,6 @@
 import { VFC } from "react";
-import { Anchor } from "components";
-import styles from "./Footer.module.scss";
+import { Anchor } from "components/atoms";
+import styles from "./footer.module.scss";
 
 const Footer: VFC = () => (
   <footer className={styles.footer}>

@@ -1,7 +1,7 @@
-import React from "react";
+import { VFC } from "react";
 import { AnchorProps } from "./types";
 
-const Anchor: React.FunctionComponent<AnchorProps> = ({
+const Anchor: VFC<AnchorProps> = ({
   link,
   icon,
   cta,

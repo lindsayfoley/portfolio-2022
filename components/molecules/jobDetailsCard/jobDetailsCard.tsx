@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import { Anchor } from "components/atoms";
+import { useState, VFC } from "react";
 import styles from "./JobDetailsCard.module.scss";
 
 import { CompanyDetails } from "./jobs";
-import { Anchor } from "components";
 
 export interface JobDetailsCardProps {
   company: CompanyDetails;
 }
 
-const JobDetailsCard: React.FunctionComponent<JobDetailsCardProps> = ({
-  company,
-}) => {
+const JobDetailsCard: VFC<JobDetailsCardProps> = ({ company }) => {
   if (!company) {
     return null;
   }
